@@ -30,12 +30,13 @@ All listed dependencies are only defaults and are configurable unless noted othe
 * `basic_materials`: Provides padlock for locked doors.
 
 ## Configuration
-All craftitems are configurable via the `minetest.conf` using settings listed in [settingtypes.txt](settingtypes.txt). Craftitem settings use a comma-deliminated list of itemstrings. Each item listed, if available, will be used as a valid item in crafting recipes using that item type.  
+All craftitems are configurable via the `minetest.conf` using settings listed in [settingtypes.txt](settingtypes.txt). Craftitem settings use a comma-deliminated list of itemstrings. Each item listed, if available, will be used as a valid item in crafting recipes using that item type. Some `greek` implementations are included by default, but may be disabled by removing the items from their lists.  
 
 Configurable item types:
 * Marble: Used to craft polished marble. Polished marble is in turn used to craft all other marble-related items.   
   NOTE: If [greeknodes compaitibility](#compatibility) is enabled, at least one registered item must be in this list.
 * Limestone: Used to craft cement for render.
+* Cement: Used to craft render.
 * Gold block: Used to craft gilded gold.
 * Clay: Used to craft red clay.
 * Blue wood: Used to craft doors and shutters.
@@ -43,6 +44,7 @@ Configurable item types:
 
 Other settings:
 * Stairs in creative inventory
+* Dye consumption upon coloring
 * Maximum vase capacity
 * Snuff fire bowls on dig
 * Enable `greeknodes` aliases
@@ -56,7 +58,7 @@ This mod is the successor to my old `greeknodes` mod. Aliases are registered by 
 
 ## Implementations
 ### Coloring
-Some nodes (render, painted tiles) have 8 available colors variants. They can be obtained by combining them with a dye (dye is not consumed) or punching a colorable node with a dye.
+Some nodes (render, painted tiles) have 8 available colors variants. They can be obtained by combining them with a dye (dye is consumed by default) or punching a colorable node with a dye.
 
 ### Stairs
 I need to be able to use dye punch-coloring on certain stairs (painted tile, render). Default stairs has two issues:
@@ -258,7 +260,7 @@ M = greek:marble_polished
 `greek:marble_painted_center_1 4`:  
 ```
 M = greek:marble_polished
-D = dye:blue
+D = dye:*
 +-+-+-+
 |M|D|M|
 +-+-+-+
@@ -271,7 +273,7 @@ D = dye:blue
 `greek:marble_painted_corner_1 4`:  
 ```
 M = greek:marble_polished
-D = dye:blue
+D = dye:*
 +-+-+-+
 |D|M|M|
 +-+-+-+
@@ -285,7 +287,7 @@ D = dye:blue
 `greek:marble_painted_edge_1 4`:  
 ```
 M = greek:marble_polished
-D = dye:blue
+D = dye:*
 +-+-+-+
 |D|M|D|
 +-+-+-+

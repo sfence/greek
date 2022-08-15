@@ -1,6 +1,9 @@
 #    Toggles showing stair nodes in the creative inventory.
 greek.show_stairs_in_creative (Show stairs in creative inventory) bool true
 
+#    Toggles consumption of dye when coloring nodes through crafting and punching.
+greek.consume_dye (Consume dye when coloring) bool false
+
 #    Comma-separated list of items that can be used as marble.
 #    Order this list by priority (descending) for greeknodes marble aliasing.
 greek.marble (Marble item list) string building_blocks:Marble,darkage:marble,hades_technic:marble
@@ -8,6 +11,9 @@ greek.marble (Marble item list) string building_blocks:Marble,darkage:marble,had
 #    Comma-separated list of items that can be used as limestone for cement-making.
 #greek.limestone (Limestone item list) string default:silver_sandstone,darkage:chalk
 greek.limestone (Limestone item list) string hades_core:sandstone,darkage:chalk
+
+#    Comma-separated list of items that can be used as cement for render.
+greek.cement (Cement item list) string greek:cement
 
 #    Comma-separated list of items that can be used as gold blocks for gilded gold.
 greek.gold_block (Gold Block item list) string hades_core:goldblock

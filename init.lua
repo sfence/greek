@@ -44,7 +44,7 @@ end
 local register_stairs = include("stairs.lua")
 function greek.register_node_and_stairs(name, definition)
     minetest.register_node(name, definition)
-    register_stairs(name, definition, name)
+    return {name, unpack(register_stairs(name, definition, name))}
 end
 
 -- Add custom group to item
@@ -107,6 +107,25 @@ function greek.register_craftring(item, total_or_table)
             type = "shapeless",
             replacements = {{itemname, itemname}, {itemname, itemname}}, -- Keep targets
         })
+    end
+end
+
+-- Colorize node on punch
+-- `dyes` is a map of palette indexes indexed by dye itemstring
+function greek.dye_punch(dyes)
+    return function(pos, node, puncher, pointed)
+        if not minetest.is_protected(pos, puncher:get_player_name()) then
+            local stack = puncher:get_wielded_item():get_name()
+            if dyes[stack] then
+                minetest.swap_node(pos, {name = node.name, param2 = (dyes[stack] * 32) + (node.param2 % 32)})
+                if greek.settings_get("consume_dye") then
+                    local wielded = puncher:get_wielded_item()
+                    wielded:take_item()
+                    puncher:set_wielded_item(wielded)
+                end
+            end
+        end
+        return minetest.node_punch(pos, node, puncher, pointed)
     end
 end
 
