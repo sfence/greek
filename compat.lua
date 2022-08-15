@@ -13,7 +13,7 @@ local nodes = {
 }
 
 for _, pair in pairs(nodes) do
-    minetest.register_alias("greeknodes:" .. pair[1], "greek:" .. pair[2])
+    minetest.register_alias("greeknodes:" .. pair[1], "hades_greek:" .. pair[2])
 end
 
 local stairs = {
@@ -27,12 +27,12 @@ local stairs = {
 
 for _, shape in pairs({"stair_", "slab_", "stair_inner_", "stair_outer_"}) do
     for _, pair in pairs(stairs) do
-        minetest.register_alias("stairs:" .. shape .. pair[1], "greek:" .. shape .. pair[2])
+        minetest.register_alias("stairs:" .. shape .. pair[1], "hades_greek:" .. shape .. pair[2])
     end
 end
 
 if greek.settings_get("alias_polished_marble") then
-    minetest.register_alias("greeknodes:marble", "greek:marble_polished")
+    minetest.register_alias("greeknodes:marble", "hades_greek:marble_polished")
 else
     minetest.register_on_mods_loaded(function()
         for _, item in ipairs(greek.settings_list("marble")) do

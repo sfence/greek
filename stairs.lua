@@ -62,14 +62,14 @@ end
 
 -- Use up-to-date stairs function if found
 if minetest.global_exists("stairs") then
-    stairs.register_stair("_", nil, {}, {})
-    stairs.register_slab("_", nil, {}, {})
+    --stairs.register_stair("_", nil, {}, {})
+    --stairs.register_slab("_", nil, {}, {})
 
-    rotate_and_place = minetest.registered_nodes["stairs:stair__"].on_place
-    slab_place = minetest.registered_nodes["stairs:slab__"].on_place
+    rotate_and_place = minetest.registered_nodes["stairs:stair_wood"].on_place
+    slab_place = minetest.registered_nodes["stairs:slab_wood"].on_place
 
-    minetest.unregister_item("stairs:stair__")
-    minetest.unregister_item("stairs:slab__")
+    --minetest.unregister_item("stairs:stair__")
+    --minetest.unregister_item("stairs:slab__")
 end
 
 local stairdefs = {

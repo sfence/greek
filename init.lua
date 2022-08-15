@@ -52,7 +52,7 @@ local function add_group(item, group)
     local def = minetest.registered_items[item]
     if def then
         local groups = table.copy(def.groups or {})
-        groups["greek:" .. group] = 1
+        groups["hades_greek:" .. group] = 1
         minetest.override_item(item, {groups = groups})
     end
 end

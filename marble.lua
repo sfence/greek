@@ -3,7 +3,7 @@
 greek.marble_groups = {cracky = 2}
 greek.marble_sounds = greek.default_sounds("node_sound_stone_defaults")
 
-greek.register_node_and_stairs("greek:marble_polished", {
+greek.register_node_and_stairs("hades_greek:marble_polished", {
 	description = "Polished Marble",
 	tiles = {"greek_marble_polished.png"},
 	groups = greek.marble_groups,
@@ -15,22 +15,22 @@ for _, item in pairs(greek.settings_list("marble")) do
 end
 
 minetest.register_craft({
-    output = "greek:marble_polished 9",
+    output = "hades_greek:marble_polished 9",
     recipe = {
-        {"group:greek:marble", "group:greek:marble", "group:greek:marble"},
-        {"group:greek:marble", "group:greek:marble", "group:greek:marble"},
-        {"group:greek:marble", "group:greek:marble", "group:greek:marble"},
+        {"group:hades_greek:marble", "group:hades_greek:marble", "group:hades_greek:marble"},
+        {"group:hades_greek:marble", "group:hades_greek:marble", "group:hades_greek:marble"},
+        {"group:hades_greek:marble", "group:hades_greek:marble", "group:hades_greek:marble"},
     },
 })
 
 minetest.register_craft({
-	output = "greek:marble_polished",
-	recipe = "greek:marble_cobble",
+	output = "hades_greek:marble_polished",
+	recipe = "hades_greek:marble_cobble",
 	type = "cooking",
 	cooktime = 5,
 })
 
-greek.register_node_and_stairs("greek:marble_polished_block", {
+greek.register_node_and_stairs("hades_greek:marble_polished_block", {
 	description = "Polished Marble Block",
 	tiles = {"greek_marble_polished_block.png"},
 	groups = greek.marble_groups,
@@ -38,14 +38,14 @@ greek.register_node_and_stairs("greek:marble_polished_block", {
 })
 
 minetest.register_craft({
-	output = "greek:marble_polished_block 4",
+	output = "hades_greek:marble_polished_block 4",
 	recipe = {
-		{"greek:marble_polished", "greek:marble_polished"},
-		{"greek:marble_polished", "greek:marble_polished"},
+		{"hades_greek:marble_polished", "hades_greek:marble_polished"},
+		{"hades_greek:marble_polished", "hades_greek:marble_polished"},
 	}
 })
 
-greek.register_node_and_stairs("greek:marble_cobble", {
+greek.register_node_and_stairs("hades_greek:marble_cobble", {
 	description = "Marble Cobble",
 	tiles = {"greek_marble_cobble.png"},
 	groups = greek.marble_groups,
@@ -53,16 +53,16 @@ greek.register_node_and_stairs("greek:marble_cobble", {
 })
 
 minetest.register_craft({
-	output = "greek:marble_cobble 5",
+	output = "hades_greek:marble_cobble 5",
 	recipe = {
-		{"greek:marble_polished", "", "greek:marble_polished"},
-		{"", "greek:marble_polished", ""},
-		{"greek:marble_polished", "", "greek:marble_polished"},
+		{"hades_greek:marble_polished", "", "hades_greek:marble_polished"},
+		{"", "hades_greek:marble_polished", ""},
+		{"hades_greek:marble_polished", "", "hades_greek:marble_polished"},
 	},
 })
 
 -- Marble pillars
-greek.register_node_and_stairs("greek:marble_pillar", {
+greek.register_node_and_stairs("hades_greek:marble_pillar", {
 	description = "Marble Pillar",
 	tiles = {"greek_marble_pillar_top.png", "greek_marble_pillar_top.png", "greek_marble_pillar_side.png"},
 	paramtype2 = "facedir",
@@ -72,17 +72,17 @@ greek.register_node_and_stairs("greek:marble_pillar", {
 })
 
 minetest.register_craft({
-	output = "greek:marble_pillar 2",
+	output = "hades_greek:marble_pillar 2",
 	recipe = {
-		{"greek:marble_polished"},
-		{"greek:marble_polished"},
+		{"hades_greek:marble_polished"},
+		{"hades_greek:marble_polished"},
 	},
 })
 
 local pillar_heads = {"doric", "ionic", "corinthian"}
 
 for _, head in pairs(pillar_heads) do
-    minetest.register_node("greek:marble_pillar_head_" .. head, {
+    minetest.register_node("hades_greek:marble_pillar_head_" .. head, {
 		description = head:gsub("^%l", string.upper) .. " Marble Pillar Head",
 		tiles = {"greek_marble_pillar_top.png", "greek_marble_pillar_top.png", "greek_marble_pillar_head_" .. head .. ".png"},
 		paramtype2 = "facedir",
@@ -91,7 +91,7 @@ for _, head in pairs(pillar_heads) do
 		on_place = minetest.rotate_node,
 	})
 
-	minetest.register_node("greek:marble_pillar_base_" .. head, {
+	minetest.register_node("hades_greek:marble_pillar_base_" .. head, {
 		description = head:gsub("^%l", string.upper)  .. " Marble Pillar Base",
 		tiles = {"greek_marble_pillar_top.png", "greek_marble_pillar_top.png", "greek_marble_pillar_base_" .. head .. ".png"},
 		paramtype2 = "facedir",
@@ -102,7 +102,7 @@ for _, head in pairs(pillar_heads) do
 end
 
 -- Ionic pillar head has some special side tiles
-minetest.override_item("greek:marble_pillar_head_ionic", {
+minetest.override_item("hades_greek:marble_pillar_head_ionic", {
     tiles = {
         "greek_marble_pillar_top.png", "greek_marble_pillar_top.png",
         "greek_marble_pillar_head_ionic_side.png", "greek_marble_pillar_head_ionic_side.png",
@@ -110,22 +110,22 @@ minetest.override_item("greek:marble_pillar_head_ionic", {
     },
 })
 
-greek.register_craftring("greek:marble_pillar_head_%s", pillar_heads)
-greek.register_craftring("greek:marble_pillar_base_%s", pillar_heads)
+greek.register_craftring("hades_greek:marble_pillar_head_%s", pillar_heads)
+greek.register_craftring("hades_greek:marble_pillar_base_%s", pillar_heads)
 
 minetest.register_craft({
-	output = "greek:marble_pillar_head_" .. pillar_heads[1] .. " 4",
+	output = "hades_greek:marble_pillar_head_" .. pillar_heads[1] .. " 4",
 	recipe = {
-		{"greek:marble_pillar", "greek:marble_polished", "greek:marble_pillar"},
-		{"", "greek:marble_pillar", ""},
+		{"hades_greek:marble_pillar", "hades_greek:marble_polished", "hades_greek:marble_pillar"},
+		{"", "hades_greek:marble_pillar", ""},
 	},
 })
 
 minetest.register_craft({
-	output = "greek:marble_pillar_base_" .. pillar_heads[1] .. " 4",
+	output = "hades_greek:marble_pillar_base_" .. pillar_heads[1] .. " 4",
 	recipe = {
-		{"", "greek:marble_pillar", ""},
-		{"greek:marble_pillar", "greek:marble_polished", "greek:marble_pillar"},
+		{"", "hades_greek:marble_pillar", ""},
+		{"hades_greek:marble_pillar", "hades_greek:marble_polished", "hades_greek:marble_pillar"},
 	},
 })
 
@@ -133,7 +133,7 @@ minetest.register_craft({
 local tile_total = 6
 
 for i = 1, tile_total do
-	greek.register_node_and_stairs("greek:marble_tile_" .. i, {
+	greek.register_node_and_stairs("hades_greek:marble_tile_" .. i, {
 		description = "Marble Tile " .. i,
 		tiles = {"greek_marble_tile_" .. i .. ".png"},
 		paramtype2 = "facedir",
@@ -142,13 +142,13 @@ for i = 1, tile_total do
 	})
 end
 
-greek.register_craftring("greek:marble_tile_%s", tile_total)
+greek.register_craftring("hades_greek:marble_tile_%s", tile_total)
 
 minetest.register_craft({
-	output = "greek:marble_tile_1 4",
+	output = "hades_greek:marble_tile_1 4",
 	recipe = {
-		{"greek:marble_polished_block", "greek:marble_polished_block"},
-		{"greek:marble_polished_block", "greek:marble_polished_block"},
+		{"hades_greek:marble_polished_block", "hades_greek:marble_polished_block"},
+		{"hades_greek:marble_polished_block", "hades_greek:marble_polished_block"},
 	}
 })
 
@@ -190,7 +190,7 @@ end
 for type, data in pairs(types) do
     local total = data[1]
     for i = 1, total do
-        local name = ("greek:marble_painted_%s_%s"):format(type, i)
+        local name = ("hades_greek:marble_painted_%s_%s"):format(type, i)
         local tile = ("greek_marble_painted_%s_%s.png"):format(type, i)
 
         greek.register_node_and_stairs(name, {
@@ -216,10 +216,10 @@ for type, data in pairs(types) do
         end
     end
 
-    greek.register_craftring("greek:marble_painted_" .. type .. "_%s", total)
+    greek.register_craftring("hades_greek:marble_painted_" .. type .. "_%s", total)
 
     -- Fill recipe template with items
-    local items = {[0] = "greek:marble_polished", "group:dye"}
+    local items = {[0] = "hades_greek:marble_polished", "group:dye"}
     for _, recipe in pairs(data[2]) do
         local filled = {}
         for row in pairs(recipe) do
@@ -230,7 +230,7 @@ for type, data in pairs(types) do
         end
 
         minetest.register_craft({
-            output = ("greek:marble_painted_%s_1 4"):format(type),
+            output = ("hades_greek:marble_painted_%s_1 4"):format(type),
             recipe = filled,
         })
     end

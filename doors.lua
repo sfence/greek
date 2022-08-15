@@ -16,7 +16,7 @@ local function toggle_door(pos)
     local yaw = minetest.dir_to_yaw(minetest.facedir_to_dir(node.param2))
     local rot = minetest.dir_to_facedir(minetest.yaw_to_dir(yaw + math.rad(flip == "a" and -90 or 90)))
 
-    minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z}, {name = "greek:door_blank", param2 = rot})
+    minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z}, {name = "hades_greek:door_blank", param2 = rot})
     minetest.swap_node(pos, {name = door .. (flip == "a" and "b" or "a"), param2 = rot + (meta:get_string("owner") ~= "" and 128 or 0)})
 
     local state = (meta:get_int("state") + 1) % 2
@@ -24,7 +24,7 @@ local function toggle_door(pos)
     if minetest.get_modpath("doors") then minetest.sound_play("doors_door_" .. ({"close", "open"})[state + 1], pos, true) end
 end
 
-minetest.register_node("greek:door_blank", {
+minetest.register_node("hades_greek:door_blank", {
     drawtype = "airlike",
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -187,7 +187,7 @@ for i = 1, door_count do
                 minetest.swap_node(pos, {name = node.name:match("^(.+_)%w$") .. "b", param2 = node.param2})
             end
 
-            minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z}, {name = "greek:door_blank", param2 = node.param2})
+            minetest.set_node({x = pos.x, y = pos.y + 1, z = pos.z}, {name = "hades_greek:door_blank", param2 = node.param2})
         end
 
         defcopy.color = "#242424"
@@ -199,7 +199,7 @@ for i = 1, door_count do
         defcopy.wield_overlay = "greek_door_" .. i .. "_inv.png"
         defcopy.wield_image = "greek_door_inv_handle.png"
 
-        minetest.register_node("greek:door_" .. i .. "_a", defcopy)
+        minetest.register_node("hades_greek:door_" .. i .. "_a", defcopy)
     end
 
     do -- Register mirrored version (should not be obtainable normally)
@@ -215,7 +215,7 @@ for i = 1, door_count do
 
         defcopy.groups.not_in_creative_inventory = 1
 
-        defcopy.drop = "greek:door_" .. i .. "_a"
+        defcopy.drop = "hades_greek:door_" .. i .. "_a"
         defcopy.preserve_metadata = function(_, node, oldmeta, drops)
             -- Preserve locked state
             if oldmeta.owner then
@@ -226,16 +226,16 @@ for i = 1, door_count do
             end
         end
 
-        minetest.register_node("greek:door_" .. i .. "_b", defcopy)
+        minetest.register_node("hades_greek:door_" .. i .. "_b", defcopy)
     end
 end
 
-greek.register_craftring("greek:door_%s_a", door_count)
+greek.register_craftring("hades_greek:door_%s_a", door_count)
 
 for _, item in pairs(greek.settings_list("blue_wood")) do
     -- Only bother registering our own if it is used
-    if item == "greek:blue_wood" then
-        greek.register_node_and_stairs("greek:blue_wood", {
+    if item == "hades_greek:blue_wood" then
+        greek.register_node_and_stairs("hades_greek:blue_wood", {
             description = "Blue Wood",
             tiles = {"greek_blue_wood.png"},
             groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 2},
@@ -243,8 +243,8 @@ for _, item in pairs(greek.settings_list("blue_wood")) do
         })
 
         minetest.register_craft({
-            output = "greek:blue_wood",
-            recipe = {"group:wood", "dye:blue"},
+            output = "hades_greek:blue_wood 2",
+            recipe = {"group:wood", "group:wood", "dye:blue", "dye:cyan"},
             type = "shapeless",
         })
     end
@@ -253,11 +253,11 @@ for _, item in pairs(greek.settings_list("blue_wood")) do
 end
 
 minetest.register_craft({
-    output = "greek:door_1_a 2",
+    output = "hades_greek:door_1_a 2",
     recipe = {
-        {"group:greek:blue_wood", "group:greek:blue_wood"},
-        {"group:greek:blue_wood", "group:greek:blue_wood"},
-        {"group:greek:blue_wood", "group:greek:blue_wood"},
+        {"group:hades_greek:blue_wood", "group:hades_greek:blue_wood"},
+        {"group:hades_greek:blue_wood", "group:hades_greek:blue_wood"},
+        {"group:hades_greek:blue_wood", "group:hades_greek:blue_wood"},
     },
 })
 
@@ -267,14 +267,14 @@ end
 
 minetest.register_craft({
     output = ItemStack({
-        name = "greek:door_1_a",
+        name = "hades_greek:door_1_a",
         meta = {
-            description = "Locked " .. minetest.registered_items["greek:door_1_a"].description,
+            description = "Locked " .. minetest.registered_items["hades_greek:door_1_a"].description,
             color = "#dcdcdc",
             palette_index = 128,
         },
     }):to_string(),
-    recipe = {"greek:door_1_a", "group:greek:door_lock"},
+    recipe = {"hades_greek:door_1_a", "group:hades_greek:door_lock"},
     type = "shapeless",
 })
 
@@ -299,31 +299,31 @@ for i = 1, shutter_count do
         },
         groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
         on_rightclick = function(pos, node)
-            minetest.swap_node(pos, {name = "greek:shutters_" .. i .. "_open", param2 = node.param2})
+            minetest.swap_node(pos, {name = "hades_greek:shutters_" .. i .. "_open", param2 = node.param2})
             if minetest.get_modpath("doors") then minetest.sound_play("doors_door_open", pos, true) end
         end,
     }
 
-    minetest.register_node("greek:shutters_" .. i, def)
+    minetest.register_node("hades_greek:shutters_" .. i, def)
 
     def = table.copy(def)
     def.tiles = {"blank.png", def.tiles[1]}
     def.groups.not_in_creative_inventory = 1
-    def.drop = "greek:shutters_" .. i
+    def.drop = "hades_greek:shutters_" .. i
     def.on_rightclick = function(pos, node)
-        minetest.swap_node(pos, {name = "greek:shutters_" .. i, param2 = node.param2})
+        minetest.swap_node(pos, {name = "hades_greek:shutters_" .. i, param2 = node.param2})
         if minetest.get_modpath("doors") then minetest.sound_play("doors_door_close", pos, true) end
     end
 
-    minetest.register_node("greek:shutters_" .. i .. "_open", def)
+    minetest.register_node("hades_greek:shutters_" .. i .. "_open", def)
 end
 
-greek.register_craftring("greek:shutters_%s", shutter_count)
+greek.register_craftring("hades_greek:shutters_%s", shutter_count)
 
 minetest.register_craft({
-    output = "greek:shutters_1 2",
+    output = "hades_greek:shutters_1 2",
     recipe = {
-        {"group:greek:blue_wood", "", "group:greek:blue_wood"},
-        {"group:greek:blue_wood", "", "group:greek:blue_wood"},
+        {"group:hades_greek:blue_wood", "", "group:hades_greek:blue_wood"},
+        {"group:hades_greek:blue_wood", "", "group:hades_greek:blue_wood"},
     },
 })

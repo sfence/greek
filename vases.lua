@@ -135,7 +135,7 @@ local shapes = {
 for shape, def in pairs(shapes) do
     for i = 1, def.total do
         local name = ("vase_%s_%s"):format(shape, i)
-        minetest.register_node("greek:" .. name, {
+        minetest.register_node("hades_greek:" .. name, {
             description = ("%s Vase %s"):format(shape:gsub("^%l", string.upper), i),
             drawtype = "mesh",
             mesh = "greek_vase_" .. shape .. ".obj",
@@ -162,22 +162,22 @@ for shape, def in pairs(shapes) do
         })
     end
 
-    greek.register_craftring("greek:vase_" .. shape .. "_%s", def.total)
+    greek.register_craftring("hades_greek:vase_" .. shape .. "_%s", def.total)
 end
 
 minetest.register_craft({
-    output = "greek:vase_amphora_1 2",
+    output = "hades_greek:vase_amphora_1 2",
     recipe = {
-        {"group:greek:red_clay", "", "group:greek:red_clay"},
-        {"group:greek:red_clay", "", "group:greek:red_clay"},
-        {"group:greek:red_clay", "group:greek:red_clay", "group:greek:red_clay"},
+        {"group:hades_greek:red_clay", "", "group:hades_greek:red_clay"},
+        {"group:hades_greek:red_clay", "", "group:hades_greek:red_clay"},
+        {"group:hades_greek:red_clay", "group:hades_greek:red_clay", "group:hades_greek:red_clay"},
     }
 })
 
 minetest.register_craft({
-    output = "greek:vase_stamnos_1 2",
+    output = "hades_greek:vase_stamnos_1 2",
     recipe = {
-        {"group:greek:red_clay", "", "group:greek:red_clay"},
-        {"group:greek:red_clay", "group:greek:red_clay", "group:greek:red_clay"},
+        {"group:hades_greek:red_clay", "", "group:hades_greek:red_clay"},
+        {"group:hades_greek:red_clay", "group:hades_greek:red_clay", "group:hades_greek:red_clay"},
     }
 })

@@ -1,6 +1,6 @@
 -- Lit nodes.
 
-minetest.register_node("greek:fire_bowl", {
+minetest.register_node("hades_greek:fire_bowl", {
     description = "Fire Bowl",
     drawtype = "mesh",
     mesh = "greek_fire_bowl.obj",
@@ -16,19 +16,19 @@ minetest.register_node("greek:fire_bowl", {
     sounds = greek.default_sounds("node_sound_glass_defaults"),
     on_place = function(stack, placer, pointed)
         -- If placed against ceiling, set to hanging fire bowl
-        local s, p = minetest.item_place((pointed.under.y > pointed.above.y and stack:replace("greek:fire_bowl_hanging") and stack) or stack, placer, pointed)
-        return s:replace("greek:fire_bowl") and s, p
+        local s, p = minetest.item_place((pointed.under.y > pointed.above.y and stack:replace("hades_greek:fire_bowl_hanging") and stack) or stack, placer, pointed)
+        return s:replace("hades_greek:fire_bowl") and s, p
     end,
     on_punch = function(pos, _, puncher)
         for _, group in pairs({"fire", "igniter", "torch"}) do
             if minetest.get_item_group(puncher:get_wielded_item():get_name(), group) > 0 then
-                return minetest.swap_node(pos, {name = "greek:fire_bowl_lit"})
+                return minetest.swap_node(pos, {name = "hades_greek:fire_bowl_lit"})
             end
         end
     end,
 })
 
-minetest.register_node("greek:fire_bowl_lit", {
+minetest.register_node("hades_greek:fire_bowl_lit", {
     description = "Fire Bowl (Lit)",
     drawtype = "mesh",
     mesh = "greek_fire_bowl.obj",
@@ -41,23 +41,23 @@ minetest.register_node("greek:fire_bowl_lit", {
     selection_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -0.25, 0.5}},
     collision_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -0.25, 0.5}},
     light_source = 12,
-    drop = greek.settings_get("fire_bowl_dig_snuff") and "greek:fire_bowl" or nil,
+    drop = greek.settings_get("fire_bowl_dig_snuff") and "hades_greek:fire_bowl" or nil,
     groups = {cracky = 3, oddly_breakable_by_hand = 2, torch = 1},
     sounds = greek.default_sounds("node_sound_glass_defaults"),
     on_place = function(stack, placer, pointed)
-        local s, p = minetest.item_place((pointed.under.y > pointed.above.y and stack:replace("greek:fire_bowl_hanging_lit") and stack) or stack, placer, pointed)
-        return s:replace("greek:fire_bowl_lit") and s, p
+        local s, p = minetest.item_place((pointed.under.y > pointed.above.y and stack:replace("hades_greek:fire_bowl_hanging_lit") and stack) or stack, placer, pointed)
+        return s:replace("hades_greek:fire_bowl_lit") and s, p
     end,
     on_punch = function(pos, _, puncher)
         for _, group in pairs({"water", "liquid", "water_bucket"}) do
             if minetest.get_item_group(puncher:get_wielded_item():get_name(), group) > 0 then
-                return minetest.swap_node(pos, {name = "greek:fire_bowl"})
+                return minetest.swap_node(pos, {name = "hades_greek:fire_bowl"})
             end
         end
     end,
 })
 
-minetest.register_node("greek:fire_bowl_hanging", {
+minetest.register_node("hades_greek:fire_bowl_hanging", {
     description = "Hanging Fire Bowl (You hacker, you)",
     drawtype = "mesh",
     mesh = "greek_fire_bowl_hanging.obj",
@@ -69,17 +69,17 @@ minetest.register_node("greek:fire_bowl_hanging", {
     collision_box = {type = "fixed", fixed = {-0.5, -1.5, -0.5, 0.5, 0.5, 0.5}},
     groups = {cracky = 3, oddly_breakable_by_hand = 2, not_in_creative_inventory = 1},
     sounds = greek.default_sounds("node_sound_glass_defaults"),
-    drop = "greek:fire_bowl",
+    drop = "hades_greek:fire_bowl",
     on_punch = function(pos, _, puncher)
         for _, group in pairs({"fire", "igniter", "torch"}) do
             if minetest.get_item_group(puncher:get_wielded_item():get_name(), group) > 0 then
-                return minetest.swap_node(pos, {name = "greek:fire_bowl_hanging_lit"})
+                return minetest.swap_node(pos, {name = "hades_greek:fire_bowl_hanging_lit"})
             end
         end
     end,
 })
 
-minetest.register_node("greek:fire_bowl_hanging_lit", {
+minetest.register_node("hades_greek:fire_bowl_hanging_lit", {
     description = "Hanging Fire Bowl (Lit) (You hacker, you)",
     drawtype = "mesh",
     mesh = "greek_fire_bowl_hanging.obj",
@@ -92,25 +92,25 @@ minetest.register_node("greek:fire_bowl_hanging_lit", {
     light_source = 12,
     groups = {cracky = 3, oddly_breakable_by_hand = 2, not_in_creative_inventory = 1},
     sounds = greek.default_sounds("node_sound_glass_defaults"),
-    drop = greek.settings_get("fire_bowl_dig_snuff") and "greek:fire_bowl" or "greek:fire_bowl_lit",
+    drop = greek.settings_get("fire_bowl_dig_snuff") and "hades_greek:fire_bowl" or "hades_greek:fire_bowl_lit",
     on_punch = function(pos, _, puncher)
         for _, group in pairs({"water", "liquid", "water_bucket"}) do
             if minetest.get_item_group(puncher:get_wielded_item():get_name(), group) > 0 then
-                return minetest.swap_node(pos, {name = "greek:fire_bowl_hanging"})
+                return minetest.swap_node(pos, {name = "hades_greek:fire_bowl_hanging"})
             end
         end
     end,
 })
 
 minetest.register_craft({
-    output = "greek:fire_bowl 2",
+    output = "hades_greek:fire_bowl 2",
     recipe = {
-        {"greek:marble_polished", "", "greek:marble_polished"},
-        {"", "greek:gilded_gold", ""},
+        {"hades_greek:marble_polished", "", "hades_greek:marble_polished"},
+        {"", "hades_greek:gilded_gold", ""},
     },
 })
 
-minetest.register_node("greek:lamp", {
+minetest.register_node("hades_greek:lamp", {
     description = "Lamp",
     drawtype = "mesh",
     mesh = "greek_lamp.obj",
@@ -131,9 +131,9 @@ minetest.register_node("greek:lamp", {
 })
 
 minetest.register_craft({
-    output = "greek:lamp 2",
+    output = "hades_greek:lamp 2",
     recipe = {
-        {"group:greek:red_clay", "", "group:greek:red_clay"},
-        {"", "group:greek:red_clay", ""},
+        {"group:hades_greek:red_clay", "", "group:hades_greek:red_clay"},
+        {"", "group:hades_greek:red_clay", ""},
     },
 })

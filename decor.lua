@@ -1,7 +1,7 @@
 -- Misc decor nodes (marble detailing, render, etc)
 
 -- Triglyphs
-greek.register_node_and_stairs("greek:triglyph", {
+greek.register_node_and_stairs("hades_greek:triglyph", {
 	description = "Marble Triglyph",
 	tiles = {"greek_marble_polished.png", "greek_marble_polished.png", "greek_triglyph.png"},
 	paramtype2 = "facedir",
@@ -10,20 +10,20 @@ greek.register_node_and_stairs("greek:triglyph", {
 })
 
 minetest.register_craft({
-	output = "greek:triglyph 4",
+	output = "hades_greek:triglyph 4",
 	recipe = {
-		{"greek:marble_polished", "", "greek:marble_polished"},
-		{"greek:marble_polished", "", "greek:marble_polished"},
+		{"hades_greek:marble_polished", "", "hades_greek:marble_polished"},
+		{"hades_greek:marble_polished", "", "hades_greek:marble_polished"},
 	}
 })
 
 minetest.register_craft({
-	output = "greek:triglyph",
-	recipe = {"greek:triglyph_blue", "dye:white"},
+	output = "hades_greek:triglyph",
+	recipe = {"hades_greek:triglyph_blue", "dye:white"},
 	type = "shapeless",
 })
 
-greek.register_node_and_stairs("greek:triglyph_blue", {
+greek.register_node_and_stairs("hades_greek:triglyph_blue", {
 	description = "Blue Marble Triglyph",
 	tiles = {"greek_marble_polished.png^[multiply:#4a797d", "greek_marble_polished.png^[multiply:#4a797d", "greek_triglyph.png^[multiply:#4a797d"},
 	paramtype2 = "facedir",
@@ -32,8 +32,8 @@ greek.register_node_and_stairs("greek:triglyph_blue", {
 })
 
 minetest.register_craft({
-	output = "greek:triglyph_blue",
-	recipe = {"greek:triglyph", "dye:blue"},
+	output = "hades_greek:triglyph_blue",
+	recipe = {"hades_greek:triglyph", "dye:blue"},
 	type = "shapeless",
 })
 
@@ -54,7 +54,7 @@ local metopes = {
 }
 
 for _, name in pairs(metopes) do
-	minetest.register_node("greek:metope_" .. name, {
+	minetest.register_node("hades_greek:metope_" .. name, {
 		description = "Metope (" .. (" " .. name):gsub("%W%l", string.upper):sub(2) .. ")",
 		tiles = {
 			"greek_metope_base.png", "greek_metope_base.png",
@@ -66,16 +66,16 @@ for _, name in pairs(metopes) do
 	})
 end
 
-greek.register_craftring("greek:metope_%s", metopes)
+greek.register_craftring("hades_greek:metope_%s", metopes)
 
 minetest.register_craft({
-	output = "greek:metope_" .. metopes[1] .. " 2",
-	recipe = {"greek:marble_polished", "group:greek:red_clay"},
+	output = "hades_greek:metope_" .. metopes[1] .. " 2",
+	recipe = {"hades_greek:marble_polished", "group:hades_greek:red_clay"},
 	type = "shapeless",
 })
 
 -- Acroterions
-minetest.register_node("greek:acroterion", {
+minetest.register_node("hades_greek:acroterion", {
 	description	= "Marble Acroterion",
     drawtype = "mesh",
     mesh = "greek_acroterion.obj",
@@ -88,21 +88,21 @@ minetest.register_node("greek:acroterion", {
 })
 
 minetest.register_craft({
-    output = "greek:acroterion 2",
+    output = "hades_greek:acroterion 2",
     recipe = {
-        {"", "greek:marble_polished", ""},
-        {"", "greek:marble_polished", ""},
-        {"greek:marble_polished", "greek:marble_polished", "greek:marble_polished"},
+        {"", "hades_greek:marble_polished", ""},
+        {"", "hades_greek:marble_polished", ""},
+        {"hades_greek:marble_polished", "hades_greek:marble_polished", "hades_greek:marble_polished"},
     },
 })
 
 minetest.register_craft({
-    output = "greek:acroterion",
-    recipe = {"greek:acroterion_corner"},
+    output = "hades_greek:acroterion",
+    recipe = {"hades_greek:acroterion_corner"},
     type = "shapeless",
 })
 
-minetest.register_node("greek:acroterion_corner", {
+minetest.register_node("hades_greek:acroterion_corner", {
 	description	= "Marble Acroterion Corner",
     drawtype = "mesh",
     mesh = "greek_acroterion.obj",
@@ -115,31 +115,31 @@ minetest.register_node("greek:acroterion_corner", {
 })
 
 minetest.register_craft({
-    output = "greek:acroterion_corner 2",
+    output = "hades_greek:acroterion_corner 2",
     recipe = {
-        {"greek:marble_polished", "", ""},
-        {"greek:marble_polished", "", ""},
-        {"greek:marble_polished", "greek:marble_polished", "greek:marble_polished"},
+        {"hades_greek:marble_polished", "", ""},
+        {"hades_greek:marble_polished", "", ""},
+        {"hades_greek:marble_polished", "hades_greek:marble_polished", "hades_greek:marble_polished"},
     },
 })
 
 minetest.register_craft({
-    output = "greek:acroterion_corner 2",
+    output = "hades_greek:acroterion_corner 2",
     recipe = {
-        {"", "", "greek:marble_polished"},
-        {"", "", "greek:marble_polished"},
-        {"greek:marble_polished", "greek:marble_polished", "greek:marble_polished"},
+        {"", "", "hades_greek:marble_polished"},
+        {"", "", "hades_greek:marble_polished"},
+        {"hades_greek:marble_polished", "hades_greek:marble_polished", "hades_greek:marble_polished"},
     },
 })
 
 minetest.register_craft({
-    output = "greek:acroterion_corner",
-    recipe = {"greek:acroterion"},
+    output = "hades_greek:acroterion_corner",
+    recipe = {"hades_greek:acroterion"},
     type = "shapeless",
 })
 
 -- Render
-minetest.register_craftitem("greek:cement", {
+minetest.register_craftitem("hades_greek:cement", {
     description = "Cement",
     inventory_image = "greek_cement.png",
 })
@@ -149,8 +149,8 @@ for _, item in pairs(greek.settings_list("limestone")) do
 end
 
 minetest.register_craft({
-    output = "greek:cement",
-    recipe = "group:greek:limestone",
+    output = "hades_greek:cement",
+    recipe = "group:hades_greek:limestone",
     type = "cooking",
     cooktime = 7,
 })
@@ -159,7 +159,7 @@ minetest.register_craft({
 local palette = {[0] = "#ffffff", "#e63845", "#ff6f45", "#f6dd4a", "#83d753", "#526ff0", "#d07fef", "#2b2b2b"}
 local dyes = {["dye:white"] = 0, ["dye:red"] = 1, ["dye:orange"] = 2, ["dye:yellow"] = 3, ["dye:green"] = 4, ["dye:blue"] = 5, ["dye:violet"] = 6, ["dye:black"] = 7}
 
-greek.register_node_and_stairs("greek:render", {
+greek.register_node_and_stairs("hades_greek:render", {
     description = "Render",
     tiles = {"greek_render.png"},
     paramtype2 = "color",
@@ -178,23 +178,23 @@ greek.register_node_and_stairs("greek:render", {
 })
 
 minetest.register_craft({
-    output = "greek:render 2",
-    recipe = {"greek:cement", "group:sand", "group:water_bucket"},
+    output = "hades_greek:render 2",
+    recipe = {"hades_greek:cement", "group:sand", "group:water_bucket"},
     replacements = {{"group:water_bucket", "bucket:bucket_empty"}},
     type = "shapeless",
 })
 
 for dye, color in pairs(dyes) do
     minetest.register_craft({
-        output = minetest.itemstring_with_color("greek:render", palette[color]),
-        recipe = {"greek:render", dye},
+        output = minetest.itemstring_with_color("hades_greek:render", palette[color]),
+        recipe = {"hades_greek:render", dye},
         replacements = {{dye, dye}},
         type = "shapeless",
     })
 end
 
 -- Misc
-greek.register_node_and_stairs("greek:gilded_gold", {
+greek.register_node_and_stairs("hades_greek:gilded_gold", {
 	description = "Gilded Gold",
 	tiles = {"greek_gilded_gold.png"},
 	groups = {cracky = 3, oddly_breakable_by_hand = 1},
@@ -206,13 +206,13 @@ for _, item in pairs(greek.settings_list("gold_block")) do
 end
 
 minetest.register_craft({
-    output = "greek:gilded_gold",
-    recipe = "group:greek:gold_block",
+    output = "hades_greek:gilded_gold",
+    recipe = "group:hades_greek:gold_block",
     type = "cooking",
     cooktime = 25,
 })
 
-greek.register_node_and_stairs("greek:red_clay_fired", {
+greek.register_node_and_stairs("hades_greek:red_clay_fired", {
 	description = "Fired Red Clay",
 	tiles = {"greek_red_clay_fired.png"},
 	groups = {cracky = 3, oddly_breakable_by_hand = 2},
@@ -221,8 +221,8 @@ greek.register_node_and_stairs("greek:red_clay_fired", {
 
 for _, item in pairs(greek.settings_list("red_clay")) do
     -- Only bother registering our own if it is used
-    if item == "greek:red_clay" then
-        minetest.register_craftitem("greek:red_clay", {
+    if item == "hades_greek:red_clay" then
+        minetest.register_craftitem("hades_greek:red_clay", {
             description = "Red Clay Lump",
             inventory_image = "greek_red_clay.png",
         })
@@ -232,11 +232,11 @@ for _, item in pairs(greek.settings_list("red_clay")) do
         end
 
         minetest.register_craft({
-            output = "greek:red_clay 8",
+            output = "hades_greek:red_clay 8",
             recipe = {
-                {"group:greek:clay_lump", "group:greek:clay_lump", "group:greek:clay_lump"},
-                {"group:greek:clay_lump", "dye:red", "group:greek:clay_lump"},
-                {"group:greek:clay_lump", "group:greek:clay_lump", "group:greek:clay_lump"},
+                {"group:hades_greek:clay_lump", "group:hades_greek:clay_lump", "group:hades_greek:clay_lump"},
+                {"group:hades_greek:clay_lump", "dye:red", "group:hades_greek:clay_lump"},
+                {"group:hades_greek:clay_lump", "group:hades_greek:clay_lump", "group:hades_greek:clay_lump"},
             },
         })
     end
@@ -245,13 +245,13 @@ for _, item in pairs(greek.settings_list("red_clay")) do
 end
 
 minetest.register_craft({
-    output = "greek:red_clay_fired",
-    recipe = "group:greek:red_clay",
+    output = "hades_greek:red_clay_fired",
+    recipe = "group:hades_greek:red_clay",
     type = "cooking",
     cooktime = 10,
 })
 
-minetest.register_node("greek:chain", {
+minetest.register_node("hades_greek:chain", {
     description = "Chain",
     drawtype = "mesh",
     mesh = "greek_chain.obj",
@@ -272,10 +272,10 @@ minetest.register_node("greek:chain", {
 })
 
 minetest.register_craft({
-    output = "greek:chain 12",
+    output = "hades_greek:chain 12",
     recipe = {
-        {"greek:gilded_gold"},
-        {"greek:gilded_gold"},
-        {"greek:gilded_gold"},
+        {"hades_greek:gilded_gold"},
+        {"hades_greek:gilded_gold"},
+        {"hades_greek:gilded_gold"},
     }
 })
