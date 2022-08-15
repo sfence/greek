@@ -34,7 +34,7 @@ local function slab_place(itemstack, placer, pointed_thing)
     local wield_item = itemstack:get_name()
     local player_name = placer and placer:get_player_name() or ""
 
-    if under and under.name:find("^stairs:slab_") then
+    if under and under.name:find("^hades_stairs:slab_") then
         -- place slab using under node orientation
         local dir = minetest.dir_to_facedir(vector.subtract(
             pointed_thing.above, pointed_thing.under), true)
@@ -61,15 +61,15 @@ local function slab_place(itemstack, placer, pointed_thing)
 end
 
 -- Use up-to-date stairs function if found
-if minetest.global_exists("stairs") then
+if minetest.global_exists("ihades_stairs") then
     --stairs.register_stair("_", nil, {}, {})
     --stairs.register_slab("_", nil, {}, {})
 
-    rotate_and_place = minetest.registered_nodes["stairs:stair_wood"].on_place
-    slab_place = minetest.registered_nodes["stairs:slab_wood"].on_place
+    rotate_and_place = minetest.registered_nodes["hades_stairs:stair_wood"].on_place
+    slab_place = minetest.registered_nodes["hades_stairs:slab_wood"].on_place
 
-    --minetest.unregister_item("stairs:stair__")
-    --minetest.unregister_item("stairs:slab__")
+    --minetest.unregister_item("hades_stairs:stair__")
+    --minetest.unregister_item("hades_stairs:slab__")
 end
 
 local stairdefs = {
@@ -147,7 +147,7 @@ return function(node, definition, craftitem)
         def.on_place = data.on_place
 
         minetest.register_node(itemname, def)
-        minetest.register_alias((itemname:gsub("^.+:", "stairs:")), itemname)
+        minetest.register_alias((itemname:gsub("^.+:", "hades_stairs:")), itemname)
 
         if craftitem and data.recipes and data.craft_total then
             local items = {[0] = "", craftitem}

@@ -27,7 +27,7 @@ local stairs = {
 
 for _, shape in pairs({"stair_", "slab_", "stair_inner_", "stair_outer_"}) do
     for _, pair in pairs(stairs) do
-        minetest.register_alias("stairs:" .. shape .. pair[1], "hades_greek:" .. shape .. pair[2])
+        minetest.register_alias("hades_stairs:" .. shape .. pair[1], "hades_greek:" .. shape .. pair[2])
     end
 end
 
